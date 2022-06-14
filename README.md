@@ -9,7 +9,7 @@ This repo was forked from https://github.com/SamhammerAG/last-successful-build-a
 ```yml
       - uses: actions/checkout@v2
       - name: Find matching workflow
-        uses: varsitytutors/last-successful-build-action@v2.2
+        uses: varsitytutors/last-successful-build-action@v2.1
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "development"
