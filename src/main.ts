@@ -23,7 +23,6 @@ async function run(): Promise<void> {
         core.info(`verify: ${inputs.verify}`);
 
         const workflows = await octokit.actions.listRepoWorkflows({ owner, repo });
-        core.info(`workflows: ${JSON.stringify(workflows)}`);
         const workflowId = workflows.data.workflows.find(w => w.name === inputs.workflow)?.id;
         core.info(`workflowId: ${workflowId}`);
 
@@ -35,7 +34,6 @@ async function run(): Promise<void> {
         }
 
         const response = await octokit.actions.listWorkflowRuns({ owner, repo, workflow_id: workflowId, per_page: 500 });
-        core.info(`response: ${JSON.stringify(response)}`);
 
         const runs = response.data.workflow_runs
             .filter(x => (!inputs.branch || x.head_branch === inputs.branch) && x.conclusion === "success")
